@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimeSystem : MonoBehaviour
 {
     private const int TIMESCALE = 1800; // Ganti 60 lagi nanti
 
-    public Text clockText;
-    public Text dayText;
-    public Text monthText;
-    public Text yearText;
+    public static bool CalculateTimeBool;
+    public TMP_Text clockText;
+    public TMP_Text dayText;
+    public TMP_Text monthText;
+    public TMP_Text yearText;
 
     public static double minute, hour, day, month, year, second;
+
+    // Move Scene Sleep
+    public string sceneToSleep;
+
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(this);
+        CalculateTimeBool = true;
         month = 3;
         day = 26;
         year = 2023;
@@ -27,6 +35,16 @@ public class TimeSystem : MonoBehaviour
     void Update()
     {
         CalculateTime();
+        TimeToSleep();
+
+        if (CalculateTimeBool == false)
+        {
+            Time.timeScale = 0;
+        } 
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     void TextCallFunction()
@@ -97,6 +115,14 @@ public class TimeSystem : MonoBehaviour
             month = 1;
             year++;
             TextCallFunction();
+        }
+    }
+
+    void TimeToSleep()
+    {
+        if(hour == 1)
+        {
+            SceneManager.LoadScene(sceneToSleep);
         }
     }
 

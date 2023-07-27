@@ -12,9 +12,22 @@ public class PlayerMovement : MonoBehaviour
 
     public Joystick joystick;
 
+    public VectorValue startingPosition;
+
+    public static bool canMove = true;
+
+    void Start()
+    {
+        transform.position = startingPosition.initialValue;
+    }
+
     void Update()
     {
-        processInputs();
+        if (canMove == true)
+        {
+            processInputs();
+        }
+        
     }
 
     private void FixedUpdate()
@@ -31,10 +44,18 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = new Vector2(joystickX, joystickY).normalized;
         // moveDirection = new Vector2(movementX, movementY).normalized;
-
-        animator.SetFloat("Horizontal", joystickX);
-        animator.SetFloat("Vertical", joystickY);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        if(moveDirection != Vector2.zero)
+        {
+            animator.SetFloat("Horizontal", joystickX);
+            animator.SetFloat("Vertical", joystickY);
+            animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+            animator.SetBool("moving", true);
+        }
+        else
+        {
+            animator.SetBool("moving", false);
+        }
+        
     }
 
     void Move()
