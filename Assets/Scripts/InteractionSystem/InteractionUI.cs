@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DPUtils.Systems.DateTime;
+
 public class InteractionUI : MonoBehaviour
 {
     public GameObject InteractionPanel;
@@ -13,6 +15,7 @@ public class InteractionUI : MonoBehaviour
     {
         InteractionPanel.SetActive(false);
         TimeSystem.CalculateTimeBool = true;
+        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
     }
 
@@ -23,6 +26,7 @@ public class InteractionUI : MonoBehaviour
         InteractionPanel.SetActive(true);
         statTextKaca.text = "Kemampuan : +1, 2 jam";
         TimeSystem.CalculateTimeBool = false;
+        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
     public void ButtonMirrorYaClicked()
@@ -32,6 +36,7 @@ public class InteractionUI : MonoBehaviour
         InteractionPanel.SetActive(false);
         TimeSystem.hour += 2;
         TimeSystem.CalculateTimeBool = true;
+        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
     }
 
@@ -42,6 +47,7 @@ public class InteractionUI : MonoBehaviour
         InteractionPanel.SetActive(true);
         statTextBarbel.text = "Kekuatan : +1, 3 jam";
         TimeSystem.CalculateTimeBool = false;
+        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
     public void ButtonBarbelYaClicked()
@@ -51,6 +57,7 @@ public class InteractionUI : MonoBehaviour
         InteractionPanel.SetActive(false);
         TimeSystem.hour += 3;
         TimeSystem.CalculateTimeBool = true;
+        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
     }
 
@@ -60,6 +67,7 @@ public class InteractionUI : MonoBehaviour
     {
         InteractionPanel.SetActive(true);
         TimeSystem.CalculateTimeBool = false;
+        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
 
@@ -69,6 +77,7 @@ public class InteractionUI : MonoBehaviour
         InteractionPanel.SetActive (false);
         TimeSystem.hour += 2;
         TimeSystem.CalculateTimeBool = true;
+        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
         // Money
         PlayerMoney.addMoney(50000);

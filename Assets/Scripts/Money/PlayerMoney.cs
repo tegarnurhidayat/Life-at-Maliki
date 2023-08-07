@@ -21,6 +21,6 @@ public class PlayerMoney : MonoBehaviour
 
     public void MoneyText()
     {
-        moneyText.text = "Rp " + money;
+        moneyText.text = money.ToString();
     }
 }

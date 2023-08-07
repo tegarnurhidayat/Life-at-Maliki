@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 9b7f17610803523498f5b6d6b1c5919c
+  - enabled: 1
+    path: Assets/Scenes/PlayerSelection.unity
+    guid: 943ac1be77e0dce4ab3b6c0720f25300
+  - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
@@ -14,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kamar Mahad.unity
     guid: e8624ca0fc616e24eaeafffa56c36640
+  - enabled: 1
+    path: Assets/Scenes/Indoor Mastar.unity
+    guid: 924d9872404ce7749bfa6c8a0dbacf1c
   m_configObjects: {}

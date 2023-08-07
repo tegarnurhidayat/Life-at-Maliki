@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TimeSystem : MonoBehaviour
 {
-    private const int TIMESCALE = 1800; // Ganti 60 lagi nanti
+    private const int TIMESCALE = 60; // Ganti 60 lagi nanti
 
     public static bool CalculateTimeBool;
     public TMP_Text clockText;
@@ -15,6 +15,7 @@ public class TimeSystem : MonoBehaviour
     public TMP_Text yearText;
 
     public static double minute, hour, day, month, year, second;
+    public static string hari, bulan;
 
     // Move Scene Sleep
     public string sceneToSleep;
@@ -24,9 +25,9 @@ public class TimeSystem : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         CalculateTimeBool = true;
-        month = 3;
-        day = 26;
-        year = 2023;
+        month = 8;
+        day = 1;
+        year = 2024;
         hour = 10;
         
     }
@@ -49,10 +50,10 @@ public class TimeSystem : MonoBehaviour
 
     void TextCallFunction()
     {
-        dayText.text = "Day: " + day;
-        clockText.text = string.Format("Time: "+ "{0:00}:{1:00}", hour, minute);
-        monthText.text = "Month: " + month;
-        yearText.text = "Year: " + year;
+        dayText.text = day.ToString();
+        clockText.text = string.Format("{0:00}:{1:00}", hour, minute);
+        monthText.text = month.ToString();
+        yearText.text = year.ToString();
     }
 
     void CalculateMonth()
@@ -115,6 +116,38 @@ public class TimeSystem : MonoBehaviour
             month = 1;
             year++;
             TextCallFunction();
+        }
+    }
+
+    void CalculateHari()
+    {
+        if(month == 8 && day == 1 || day == 8 || day == 15 || day == 22 || day == 29)
+        {
+            hari = "Kamis";
+        }
+        else if(month == 8 && day == 2 || day == 9 || day == 16 || day == 23 || day == 30)
+        {
+            hari = "Jumat";
+        }
+        else if (month == 8 && day == 3 || day == 10 || day == 17 || day == 24 || day == 31)
+        {
+            hari = "Sabtu";
+        }
+        else if (month == 8 && day == 4 || day == 11 || day == 18 || day == 25)
+        {
+            hari = "Minggu";
+        }
+        else if (month == 8 && day == 5 || day == 12 || day == 19 || day == 26)
+        {
+            hari = "Senin";
+        }
+        else if (month == 8 && day == 6 || day == 13 || day == 20 || day == 27)
+        {
+            hari = "Selasa";
+        }
+        else if (month == 8 && day == 7 || day == 14 || day == 21 || day == 28)
+        {
+            hari = "Rabu";
         }
     }
 
