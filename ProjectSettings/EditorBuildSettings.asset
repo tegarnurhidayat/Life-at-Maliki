@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mahad Putra.unity
     guid: bb1c968d78d6fb542963d6b90498ed20
   - enabled: 1
-    path: Assets/Scenes/Kamar Mahad.unity
+    path: Assets/Scenes/Kamar Rumah.unity
     guid: e8624ca0fc616e24eaeafffa56c36640
   - enabled: 1
     path: Assets/Scenes/Indoor Mastar.unity

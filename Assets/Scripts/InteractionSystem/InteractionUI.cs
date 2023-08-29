@@ -7,57 +7,46 @@ public class InteractionUI : MonoBehaviour
 {
     public GameObject InteractionPanel;
     
-    public TMP_Text statTextKaca;
-    public TMP_Text statTextBarbel;
-
     //Click Tidak
     public void ButtonTidakClicked()
     {
         InteractionPanel.SetActive(false);
-        TimeSystem.CalculateTimeBool = true;
-        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
     }
 
-
-    //Click Mirror dan Ya
-    public void Mirror() 
+    //Click Ketaatan dan Ya
+    public void Ketaatan() 
     {
         InteractionPanel.SetActive(true);
-        statTextKaca.text = "Kemampuan : +1, 2 jam";
-        TimeSystem.CalculateTimeBool = false;
-        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
-    public void ButtonMirrorYaClicked()
-    {
-        PlayerEnergy.startAct = true;
-        PlayerStats.addStat1(1);
+    public void ButtonKetaatanYaClicked()
+    {  
         InteractionPanel.SetActive(false);
-        TimeSystem.hour += 2;
-        TimeSystem.CalculateTimeBool = true;
-        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
     }
 
-
-    //Click Barbel dan Ya
-    public void Barbel() 
+    //Click Kepintaran dan Ya
+    public void Kepintaran() 
     {
         InteractionPanel.SetActive(true);
-        statTextBarbel.text = "Kekuatan : +1, 3 jam";
-        TimeSystem.CalculateTimeBool = false;
-        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
-    public void ButtonBarbelYaClicked()
+    public void ButtonKepintaranYaClicked()
     {
-        PlayerEnergy.startAct = true;
-        PlayerStats.addStat2(1);
         InteractionPanel.SetActive(false);
-        TimeSystem.hour += 3;
-        TimeSystem.CalculateTimeBool = true;
-        TimeManager.CalculateTimeBool = true;
+        PlayerMovement.canMove = true;
+    }
+
+    //Click Kepintaran dan Ya
+    public void Kekuatan()
+    {
+        InteractionPanel.SetActive(true);
+        PlayerMovement.canMove = false;
+    }
+    public void ButtonKekuatanYaClicked()
+    {
+        InteractionPanel.SetActive(false);
         PlayerMovement.canMove = true;
     }
 
@@ -66,20 +55,12 @@ public class InteractionUI : MonoBehaviour
     public void Work()
     {
         InteractionPanel.SetActive(true);
-        TimeSystem.CalculateTimeBool = false;
-        TimeManager.CalculateTimeBool = false;
         PlayerMovement.canMove = false;
     }
 
     public void ButtonWorkYaClicked()
     {
-        PlayerEnergy.startAct = true;
         InteractionPanel.SetActive (false);
-        TimeSystem.hour += 2;
-        TimeSystem.CalculateTimeBool = true;
-        TimeManager.CalculateTimeBool = true;
         PlayerMovement.canMove = true;
-        // Money
-        PlayerMoney.addMoney(50000);
     }
 }

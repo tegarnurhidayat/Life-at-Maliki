@@ -3,34 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDataPersistence
 {
-    // Stats Values
-    public static int stat1 = 0;
-    public static int stat2 = 0;
-
-    // Display
     public TMP_Text stat1Text;
     public TMP_Text stat2Text;
+    public TMP_Text stat3Text;
 
-    void Update()
+    public StatBar statBar;
+
+    public int stat1 = 0;
+    public int stat2 = 0;
+    public int stat3 = 0;
+
+    public int level1Add = 1;
+
+    public void LoadData(GameData data)
+    {
+        this.stat1 = data.stat1;
+        this.stat2 = data.stat2;
+        this.stat3 = data.stat3;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.stat1 = this.stat1;
+        data.stat2 = this.stat2;
+        data.stat3 = this.stat3;
+    }
+
+    private void Update()
     {
         StatsText();
     }
 
-    public static void addStat1(int plusStat1)
+    public void AddStat1()
     {
-        stat1 += plusStat1;
+        stat1 += level1Add;
     }
 
-    public static void addStat2(int plusStat2)
+    public void AddStat2()
     {
-        stat2 += plusStat2;
+        stat2 += level1Add;
+    }
+
+    public void AddStat3()
+    {
+        stat3 += level1Add;
     }
 
     public void StatsText()
     {
-        stat1Text.text = "Stat1 : " + stat1;
-        stat2Text.text = "Stat2 : " + stat2;
+        stat1Text.text = stat1 + "/10";
+        statBar.setStat1(stat1);
+
+        stat2Text.text = stat2 + "/10";
+        statBar.setStat2(stat2);
+
+        stat3Text.text = stat3 + "/10";
+        statBar.setStat3(stat3);
     }
 }

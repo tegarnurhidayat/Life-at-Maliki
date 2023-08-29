@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerMoney : MonoBehaviour
+public class PlayerMoney : MonoBehaviour, IDataPersistence
 {
-    public static int money = 0;
+    public int money = 0;
+    public int workMoney = 15000;
 
     public TMP_Text moneyText;
 
@@ -14,13 +15,23 @@ public class PlayerMoney : MonoBehaviour
         MoneyText();
     }
 
-    public static void addMoney(int plusMoney)
+    public void addMoney()
     {
-        money += plusMoney;
+        money += workMoney;
     }
 
     public void MoneyText()
     {
         moneyText.text = money.ToString();
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.money = data.money;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.money = this.money;
     }
 }

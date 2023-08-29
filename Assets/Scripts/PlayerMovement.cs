@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
 
     public static bool canMove = true;
 
+    public bool isWalking = false;
+
     void Start()
     {
         transform.position = startingPosition.initialValue;
@@ -50,10 +52,22 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Vertical", joystickY);
             animator.SetFloat("Speed", moveDirection.sqrMagnitude);
             animator.SetBool("moving", true);
+
+            if (!isWalking)
+            {
+                isWalking = true;
+                AudioManager.instance.PlaySFX("Footstep");
+            }
         }
         else
         {
             animator.SetBool("moving", false);
+            
+            if(isWalking)
+            {
+                isWalking = false;
+                AudioManager.instance.StopSFX("Footstep");
+            }
         }
         
     }

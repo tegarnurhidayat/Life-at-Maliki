@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterSelection : MonoBehaviour
+public class CharacterSelection : MonoBehaviour, IDataPersistence
 {
     public GameObject[] characters;
     public int selectedCharacter = 0;
@@ -28,7 +28,17 @@ public class CharacterSelection : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
+        //PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
         SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
+    public void LoadData(GameData data)
+    {
+        //this.selectedCharacter = data.selectedCharacter;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.selectedCharacter = this.selectedCharacter;
     }
 }

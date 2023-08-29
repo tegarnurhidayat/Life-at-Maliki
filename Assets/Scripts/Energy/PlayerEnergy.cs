@@ -7,36 +7,24 @@ using TMPro;
 public class PlayerEnergy : MonoBehaviour
 {
 
-    public static int maxEnergy = 100;
-    public static int currentEnergy;
+    public int maxEnergy = 100;
+    public int currentEnergy;
 
     public EnergyBar energyBar;
 
-    public static bool startAct;
+    public int energyNeeded = 5;
 
-    // Start is called before the first frame update
     void Start()
     {
-        startAct = false;
         currentEnergy = maxEnergy;
         energyBar.setMaxEnergy(maxEnergy);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void minEnergy()
     {
-        if(startAct) 
-        {
-            minEnergy(5);
-        }
-    }
-
-    public void minEnergy(int capek)
-    {
-        currentEnergy -= capek;
+        currentEnergy -= energyNeeded;
 
         energyBar.setEnergy(currentEnergy);
-        startAct = false;
     }
 
     
