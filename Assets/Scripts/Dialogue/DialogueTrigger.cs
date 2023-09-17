@@ -1,4 +1,5 @@
 using DPUtils.Systems.DateTime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class DialogueTrigger : MonoBehaviour
 {
     [Header("Dialogue Cue")]
     [SerializeField] private GameObject dialogueButtonCue;
+    [SerializeField] private Boolean isCutscene; //Apakah ini dialogue cutscene?
+    [SerializeField] private int CutsceneCount; //Variabel agar cutscene tidak tertrigger lagi
 
     private bool playerInRange;
     public static bool dialogueStarts;
@@ -22,17 +25,27 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Update()
     {
-        if (playerInRange && !dialogueStarts)
+        if (!isCutscene)
         {
-            dialogueButtonCue.SetActive(true);
-        }
-        else if (playerInRange && dialogueStarts)
+            if (playerInRange && !dialogueStarts)
+            {
+                dialogueButtonCue.SetActive(true);
+            }
+            else if (playerInRange && dialogueStarts)
+            {
+                dialogueButtonCue.SetActive(false);
+            }
+            else
+            {
+                dialogueButtonCue.SetActive(false);
+            }
+        } else if (isCutscene && CutsceneCount == 0) 
         {
-            dialogueButtonCue.SetActive(false);
-        }
-        else
-        {
-            dialogueButtonCue.SetActive(false);
+            if (playerInRange)
+            {
+                DialogueInteraction();
+                CutsceneCount += 1;
+            }
         }
     }
 
