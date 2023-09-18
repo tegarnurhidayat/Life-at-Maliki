@@ -16,6 +16,6 @@ MonoBehaviour:
   displayName: Collect the Items!
   levelRequirement: 1
   questPrerequisites: []
-  questStepPrefabs: []
-  goldReward: 20000
-  experienceReward: 10
+  questStepPrefabs:
+  - {fileID: 55391593346107888, guid: af1d6631a98562045bbbfebefa1483be, type: 3}
+  experienceReward: 5

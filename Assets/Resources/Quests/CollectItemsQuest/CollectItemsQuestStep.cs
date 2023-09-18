@@ -9,12 +9,12 @@ public class CollectItemsQuestStep : QuestStep
 
     private void OnEnable()
     {
-        
+        GameEventsManager.instance.miscEvents.onItemCollected += ItemCollected;
     }
 
     private void OnDisable()
     {
-        
+        GameEventsManager.instance.miscEvents.onItemCollected -= ItemCollected;
     }
 
     private void ItemCollected()
@@ -22,11 +22,24 @@ public class CollectItemsQuestStep : QuestStep
         if (itemsCollected < itemsToComplete)
         {
             itemsCollected++;
+            UpdateState();
         }
 
         if (itemsCollected >= itemsToComplete)
         {
             FinishQuestStep();
         }
+    }
+
+    private void UpdateState()
+    {
+        string state = itemsCollected.ToString();
+        ChangeState(state);
+    }
+
+    protected override void SetQuestStepState(string state)
+    {
+        this.itemsCollected = System.Int32.Parse(state);
+        UpdateState();
     }
 }
