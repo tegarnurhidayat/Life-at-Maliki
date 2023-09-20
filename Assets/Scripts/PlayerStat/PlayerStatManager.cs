@@ -55,11 +55,6 @@ public class PlayerStatManager : MonoBehaviour
         GameEventsManager.instance.statEvents.PlayerExperience3Change(currentExpKekuatan);
     }
 
-    private void Update()
-    {
-        Debug.Log(currentExpKetaatan.ToString());
-    }
-
     private void Experience1Gained(int experience1)
     {
         currentExpKetaatan += experience1;
