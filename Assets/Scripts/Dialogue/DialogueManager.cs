@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance == null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the Scene");
         }
@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
-    public void ExitDialogueMode()
+    private void ExitDialogueMode()
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
