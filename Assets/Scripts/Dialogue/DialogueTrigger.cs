@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    [Header("Dialogue Cue")]
     [SerializeField] private GameObject dialogueButtonCue;
 
     private bool playerInRange;
