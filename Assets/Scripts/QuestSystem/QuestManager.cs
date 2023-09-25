@@ -131,7 +131,6 @@ public class QuestManager : MonoBehaviour
 
     private void FinishQuest(string id)
     {
-        Debug.Log("finish");
         Quest quest = GetQuestById(id);
         ClaimRewards(quest);
         ChangeQuestState(quest.info.id, QuestState.FINISHED);
@@ -139,9 +138,8 @@ public class QuestManager : MonoBehaviour
 
         private void ClaimRewards(Quest quest)
         {
-            Debug.Log("claim");
-            //GameEventsManager.instance.goldEvents.GoldGained(quest.info.goldReward);
-            GameEventsManager.instance.statEvents.Experience1Gained(quest.info.experienceReward);
+        GameEventsManager.instance.moneyEvents.MoneyGained(quest.info.moneyReward);
+        GameEventsManager.instance.statEvents.Experience1Gained(quest.info.experienceReward);
         }
 
     private void QuestStepStateChange(string id, int stepIndex, QuestStepState questStepState)

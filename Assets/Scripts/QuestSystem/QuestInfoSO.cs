@@ -18,9 +18,8 @@ public class QuestInfoSO : ScriptableObject
     public GameObject[] questStepPrefabs;
 
     [Header("Rewards")]
-    //public int goldReward;      // Ganti duit
-    public int experienceReward; // ganti apa kek 
-
+    public int moneyReward;     
+    public int experienceReward; 
 
     // Biar IDnya sama kaya nama scriptable object nya
     private void OnValidate()

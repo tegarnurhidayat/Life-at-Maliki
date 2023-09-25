@@ -5,11 +5,11 @@ public class GameEventsManager : MonoBehaviour
 {
     public static GameEventsManager instance { get; private set; }
 
-    public InputEvents inputEvents;
     public StatEvents statEvents;
     public ItemEvents itemEvents;
     public MiscEvents miscEvents;
     public QuestEvents questEvents;
+    public MoneyEvents moneyEvents;
 
     private void Awake()
     {
@@ -20,10 +20,10 @@ public class GameEventsManager : MonoBehaviour
         instance = this;
 
         // initialize all events
-        inputEvents = new InputEvents();
         statEvents = new StatEvents();
         itemEvents = new ItemEvents();
         miscEvents = new MiscEvents();
         questEvents = new QuestEvents();
+        moneyEvents = new MoneyEvents();
     }
 }
