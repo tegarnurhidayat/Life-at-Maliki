@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] public GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI dialogueText;
     [SerializeField] private Button dialogueButton;
+    [SerializeField] private GameObject floatingJoystick;
 
     private Story currentStory;
 
@@ -65,6 +66,7 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        floatingJoystick.SetActive(false);
 
         ContinueStory();
     }
@@ -76,6 +78,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         TimeSystem.CalculateTimeBool = true;
         TimeManager.CalculateTimeBool = true;
+        floatingJoystick.SetActive(true);
         PlayerMovement.canMove = true;
     }
     
